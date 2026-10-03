@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="SHOQAN classic menswear. A responsive university storefront project with tailoring, shirts, outerwear and accessories.">
     <meta name="theme-color" content="#111111">
     <title>Cart / Checkout | SHOQAN</title>
     <link rel="icon" href="images/branding/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="vendor/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" onerror="this.onerror=null;this.removeAttribute('integrity');this.removeAttribute('crossorigin');this.href='vendor/bootstrap.min.css'">
     <link rel="stylesheet" href="css/style.css">
+    <script src="vendor/bootstrap.bundle.min.js" defer></script>
+    <script src="js/products.js" defer></script>
+  <script src="js/script.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -15,11 +19,10 @@
   <header class="site-header">
       <div class="site-container header-inner">
         <a class="brand" href="index.html" aria-label="SHOQAN home">SHOQAN</a>
-        <input class="menu-checkbox visually-hidden" type="checkbox" id="menu-toggle" aria-label="Show navigation menu" aria-controls="header-menu">
-        <label class="menu-toggle" for="menu-toggle">
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="header-menu">
           <svg viewbox="0 0 24 24" aria-hidden="true">
             <path d="M3 6h18M3 12h18M3 18h18"></path>
-          </svg>Menu</label>
+          </svg>Menu</button>
         <div class="header-menu" id="header-menu">
           <nav aria-label="Main navigation">
             <ul class="nav-list">
@@ -41,17 +44,17 @@
             </ul>
           </nav>
           <div class="header-actions">
-            <form class="header-search" action="#" method="post" role="search">
+            <form class="header-search" action="catalog.html" method="get" role="search">
               <label class="visually-hidden" for="site-search">Search the collection</label>
-              <input class="form-control" type="search" id="site-search" name="q" placeholder="Search" maxlength="80" readonly title="Static HTML/CSS example. Use the Catalog link to browse products.">
-              <button class="search-button static-control" type="submit" aria-label="Search" disabled title="Search is unavailable in this static HTML/CSS example.">
+              <input class="form-control" type="search" id="site-search" name="q" placeholder="Search" maxlength="80">
+              <button class="search-button" type="submit" aria-label="Search">
                 <svg viewbox="0 0 24 24" aria-hidden="true">
                   <circle cx="10.5" cy="10.5" r="6.5"></circle>
                   <path d="m16 16 5 5"></path>
                 </svg>
               </button>
             </form>
-            <a class="btn btn-dark" href="cart.html">Cart (<span>3</span>)</a>
+            <a class="btn btn-dark" href="cart.html">Cart (<span data-cart-count>0</span>)</a>
             <a class="btn btn-dark" href="login.html">Login</a>
           </div>
         </div>
@@ -66,7 +69,7 @@
           <section aria-label="Products in your cart">
             <div>
               <table class="cart-table">
-                <caption class="visually-hidden">Example shopping cart. Quantities and totals are fixed.</caption>
+                <caption class="visually-hidden">Your shopping cart. Change quantities or remove a product.</caption>
                 <thead>
                   <tr>
                     <th scope="col">Product</th>
@@ -78,28 +81,10 @@
                     </th>
                   </tr>
                 </thead>
-                <tbody id="cart-items"><tr class="cart-row">
-      <td class="cart-product"><img src="images/products/suit.jpg" alt="Close view of a blue checked three-piece suit with a white shirt and dark tie." width="96" height="96"><div><a href="product.html">Classic Wool Suit</a><small>Navy</small></div></td>
-      <td class="cart-size" data-label="Size">M</td>
-      <td class="cart-quantity" data-label="Quantity"><input class="form-control" type="number" min="1" max="99" step="1" value="1" aria-label="Quantity of Classic Wool Suit" readonly title="Static HTML/CSS demo; quantities are fixed examples."></td>
-      <td class="cart-price" data-label="Price">129,000 ₸</td>
-      <td class="cart-remove"><button type="button" class="remove-button static-control" aria-label="Remove Classic Wool Suit from cart" disabled title="Static HTML/CSS demo; these cart rows are fixed examples.">×</button></td>
-    </tr><tr class="cart-row">
-      <td class="cart-product"><img src="images/products/shirt.jpg" alt="Blue patterned button-up shirt on a hanger against a pale background." width="96" height="96"><div><a href="product-oxford-cotton-shirt.html">Oxford Cotton Shirt</a><small>White</small></div></td>
-      <td class="cart-size" data-label="Size">M</td>
-      <td class="cart-quantity" data-label="Quantity"><input class="form-control" type="number" min="1" max="99" step="1" value="1" aria-label="Quantity of Oxford Cotton Shirt" readonly title="Static HTML/CSS demo; quantities are fixed examples."></td>
-      <td class="cart-price" data-label="Price">24,900 ₸</td>
-      <td class="cart-remove"><button type="button" class="remove-button static-control" aria-label="Remove Oxford Cotton Shirt from cart" disabled title="Static HTML/CSS demo; these cart rows are fixed examples.">×</button></td>
-    </tr><tr class="cart-row">
-      <td class="cart-product"><img src="images/products/trousers.jpg" alt="Model wearing black tailored trousers and a white short-sleeved shirt." width="96" height="96"><div><a href="product-tailored-trousers.html">Tailored Trousers</a><small>Grey</small></div></td>
-      <td class="cart-size" data-label="Size">M</td>
-      <td class="cart-quantity" data-label="Quantity"><input class="form-control" type="number" min="1" max="99" step="1" value="1" aria-label="Quantity of Tailored Trousers" readonly title="Static HTML/CSS demo; quantities are fixed examples."></td>
-      <td class="cart-price" data-label="Price">34,900 ₸</td>
-      <td class="cart-remove"><button type="button" class="remove-button static-control" aria-label="Remove Tailored Trousers from cart" disabled title="Static HTML/CSS demo; these cart rows are fixed examples.">×</button></td>
-    </tr></tbody>
+                <tbody id="cart-items"></tbody>
               </table>
             </div>
-            <div id="cart-empty" class="empty-state" hidden="">
+            <div id="cart-empty" class="empty-state" hidden>
               <h2>Your cart is empty</h2>
               <p>A well-chosen wardrobe starts with one good piece.</p>
               <a class="btn btn-dark" href="catalog.html">Explore the catalog</a>
@@ -110,11 +95,11 @@
             <dl class="summary-lines">
               <div>
                 <dt>Subtotal</dt>
-                <dd id="cart-subtotal">188,800 ₸</dd>
+                <dd id="cart-subtotal">0 ₸</dd>
               </div>
               <div>
                 <dt>Delivery</dt>
-                <dd id="cart-delivery">Free</dd>
+                <dd id="cart-delivery">0 ₸</dd>
               </div>
               <div>
                 <dt>Discount</dt>
@@ -122,56 +107,56 @@
               </div>
               <div class="summary-total">
                 <dt>Total</dt>
-                <dd id="cart-total">188,800 ₸</dd>
+                <dd id="cart-total">0 ₸</dd>
               </div>
             </dl>
-            <form id="promo-form" class="promo-form" action="#" method="post">
+            <form id="promo-form" class="promo-form">
               <label class="visually-hidden" for="promo-code">Promo code</label>
               <div class="d-flex gap-2">
                 <input class="form-control" id="promo-code" name="promoCode" type="text" placeholder="Promo Code" autocomplete="off" aria-describedby="promo-hint promo-feedback">
-                <button class="btn btn-outline-dark static-control" type="submit" disabled title="Static HTML/CSS demo; promo codes do not change these example totals.">Apply</button>
+                <button class="btn btn-outline-dark" type="submit">Apply</button>
               </div>
-              <p id="promo-hint" class="form-hint">Static demo; totals are fixed.</p>
+              <p id="promo-hint" class="form-hint">Try SHOQAN10 for 10% off.</p>
               <p id="promo-feedback" class="form-feedback" role="status" aria-live="polite"></p>
             </form>
-            <a id="proceed-checkout" class="btn btn-dark w-100" href="#checkout">Proceed to Checkout</a>
+            <button id="proceed-checkout" class="btn btn-dark w-100" type="button">Proceed to Checkout</button>
           </aside>
         </div>
         <section id="checkout" class="checkout-section" aria-labelledby="checkout-heading">
           <h2 id="checkout-heading">Checkout Details</h2>
-          <form id="checkout-form" action="#" method="post">
+          <form id="checkout-form">
             <div class="checkout-grid">
               <div class="checkout-customer">
                 <div class="row g-3">
                   <div class="col-sm-6">
                     <label class="visually-hidden" for="checkout-name">Full name</label>
-                    <input class="form-control" id="checkout-name" name="fullName" type="text" placeholder="Full Name" autocomplete="name" required="" minlength="2">
+                    <input class="form-control" id="checkout-name" name="fullName" type="text" placeholder="Full Name" autocomplete="name" required minlength="2">
                   </div>
                   <div class="col-sm-6">
                     <label class="visually-hidden" for="checkout-email">Email address</label>
-                    <input class="form-control" id="checkout-email" name="email" type="email" placeholder="E-mail" autocomplete="email" required="">
+                    <input class="form-control" id="checkout-email" name="email" type="email" placeholder="E-mail" autocomplete="email" required>
                   </div>
                   <div class="col-12">
                     <label class="visually-hidden" for="checkout-phone">Phone number</label>
-                    <input class="form-control" id="checkout-phone" name="phone" type="tel" placeholder="Phone" autocomplete="tel" required="" minlength="7">
+                    <input class="form-control" id="checkout-phone" name="phone" type="tel" placeholder="Phone" autocomplete="tel" required minlength="7">
                   </div>
                   <div class="col-sm-6">
                     <label class="visually-hidden" for="checkout-city">City</label>
-                    <input class="form-control" id="checkout-city" name="city" type="text" placeholder="City" autocomplete="address-level2" required="">
+                    <input class="form-control" id="checkout-city" name="city" type="text" placeholder="City" autocomplete="address-level2" required>
                   </div>
                   <div class="col-sm-6">
                     <label class="visually-hidden" for="checkout-address">Street address</label>
-                    <input class="form-control" id="checkout-address" name="address" type="text" placeholder="Address" autocomplete="street-address" required="">
+                    <input class="form-control" id="checkout-address" name="address" type="text" placeholder="Address" autocomplete="street-address" required>
                   </div>
                   <div class="col-12">
                     <label class="visually-hidden" for="checkout-postal">Postal code</label>
-                    <input class="form-control" id="checkout-postal" name="postalCode" type="text" placeholder="Postal Code" autocomplete="postal-code" required="">
+                    <input class="form-control" id="checkout-postal" name="postalCode" type="text" placeholder="Postal Code" autocomplete="postal-code" required>
                   </div>
                 </div>
               </div>
               <div>
                 <label class="visually-hidden" for="delivery-method">Delivery method</label>
-                <select class="form-select static-control" id="delivery-method" name="delivery" required="" disabled title="Static HTML/CSS demo; delivery and totals are fixed examples.">
+                <select class="form-select" id="delivery-method" name="delivery" required>
                   <option value="standard">Standard Delivery</option>
                   <option value="express">Express Delivery</option>
                   <option value="pickup">Store Pickup</option>
@@ -179,7 +164,7 @@
                 <fieldset class="payment-options">
                   <legend class="visually-hidden">Payment method</legend>
                   <label class="form-check">
-                    <input class="form-check-input" type="radio" name="payment" value="credit-card" required="" checked>
+                    <input class="form-check-input" type="radio" name="payment" value="credit-card" required checked>
                     <span class="form-check-label">Credit Card</span>
                   </label>
                   <label class="form-check">
@@ -194,16 +179,16 @@
                 <label class="visually-hidden" for="order-comment">Order comment (optional)</label>
                 <textarea class="form-control" id="order-comment" name="comment" rows="3" placeholder="Order Comment (optional)"></textarea>
                 <label class="form-check terms-check" for="checkout-terms">
-                  <input class="form-check-input" id="checkout-terms" name="terms" type="checkbox" required="">
+                  <input class="form-check-input" id="checkout-terms" name="terms" type="checkbox" required>
                   <span class="form-check-label">I agree to the terms and conditions</span>
                 </label>
-                <button class="btn btn-dark w-100 static-control" type="submit" disabled title="Static HTML/CSS demo; orders and payments are not submitted.">Place Order</button>
+                <button class="btn btn-dark w-100" type="submit">Place Order</button>
                 <p class="form-hint">Demo checkout. No payment is collected and no order is sent.</p>
                 <p id="checkout-feedback" class="form-feedback" role="status" aria-live="polite"></p>
               </div>
             </div>
           </form>
-          <div id="order-confirmation" class="order-confirmation" role="status" aria-live="polite" tabindex="-1" hidden=""></div>
+          <div id="order-confirmation" class="order-confirmation" role="status" aria-live="polite" tabindex="-1" hidden></div>
         </section>
       </div>
     </main>
@@ -215,13 +200,13 @@
             <h2 id="footer-shop">SHOP</h2>
             <ul>
               <li>
-                <a href="catalog-suits.html">Suits</a>
+                <a href="catalog.html?category=Suits">Suits</a>
               </li>
               <li>
-                <a href="catalog-shirts.html">Shirts</a>
+                <a href="catalog.html?category=Shirts">Shirts</a>
               </li>
               <li>
-                <a href="catalog-coats.html">Coats</a>
+                <a href="catalog.html?category=Coats">Coats</a>
               </li>
             </ul>
           </section>
@@ -229,10 +214,10 @@
             <h2 id="footer-help">HELP</h2>
             <ul>
               <li>
-                <button class="footer-link static-control" type="button" disabled title="Static demo: this control is unavailable.">Delivery</button>
+                <button class="footer-link" type="button" data-info="delivery">Delivery</button>
               </li>
               <li>
-                <button class="footer-link static-control" type="button" disabled title="Static demo: this control is unavailable.">Returns</button>
+                <button class="footer-link" type="button" data-info="returns">Returns</button>
               </li>
               <li>
                 <a href="product.html#product-size-guide">Size Guide</a>
@@ -249,7 +234,7 @@
                 <a href="contact.html#message-heading">Contact</a>
               </li>
               <li>
-                <button class="footer-link static-control" type="button" disabled title="Static demo: this control is unavailable.">Careers</button>
+                <button class="footer-link" type="button" data-info="careers">Careers</button>
               </li>
             </ul>
           </section>
@@ -257,31 +242,31 @@
             <h2 id="footer-legal">LEGAL</h2>
             <ul>
               <li>
-                <button class="footer-link static-control" type="button" disabled title="Static demo: this control is unavailable.">Privacy</button>
+                <button class="footer-link" type="button" data-info="privacy">Privacy</button>
               </li>
               <li>
-                <button class="footer-link static-control" type="button" disabled title="Static demo: this control is unavailable.">Terms</button>
+                <button class="footer-link" type="button" data-info="terms">Terms</button>
               </li>
               <li>
-                <button class="footer-link static-control" type="button" disabled title="Static demo: this control is unavailable.">Cookies</button>
+                <button class="footer-link" type="button" data-info="cookies">Cookies</button>
               </li>
             </ul>
           </section>
         </div>
         <div class="social-links" aria-label="Social channels">
-          <button type="button" aria-label="Instagram" class="static-control" disabled title="Static demo: this control is unavailable.">
+          <button type="button" data-info="instagram" aria-label="Instagram">
             <svg viewbox="0 0 24 24" aria-hidden="true">
               <rect x="3" y="3" width="18" height="18" rx="5"></rect>
               <circle cx="12" cy="12" r="4"></circle>
               <circle cx="17.5" cy="6.5" r=".7"></circle>
             </svg>
           </button>
-          <button type="button" aria-label="Facebook" class="static-control" disabled title="Static demo: this control is unavailable.">
+          <button type="button" data-info="facebook" aria-label="Facebook">
             <svg viewbox="0 0 24 24" aria-hidden="true">
               <path d="M14 22V12h4l1-4h-5V6c0-2 1-3 4-3V0c-6 0-8 2-8 6v2H7v4h3v10"></path>
             </svg>
           </button>
-          <button type="button" aria-label="Pinterest" class="static-control" disabled title="Static demo: this control is unavailable.">
+          <button type="button" data-info="pinterest" aria-label="Pinterest">
             <svg viewbox="0 0 24 24" aria-hidden="true">
               <path d="m8 22 4-16M10.5 13c1 4 7 3 8-1 2-7-2-11-7-10-8 1-8 10-4 13"></path>
             </svg>
@@ -290,8 +275,11 @@
         <p class="copyright">© 2026 SHOQAN. All rights reserved.</p>
       </div>
     </footer>
-  
-
-
-
-</body></html>
+    <div id="site-toast" class="site-toast" role="status" aria-live="polite"></div>
+    <dialog id="info-dialog" class="info-dialog" aria-labelledby="info-dialog-title">
+      <h2 id="info-dialog-title"></h2>
+      <p id="info-dialog-text"></p>
+      <button class="btn btn-dark" type="button" data-dialog-close>Close</button>
+    </dialog>
+  </body>
+</html>
