@@ -27,13 +27,15 @@ There is no framework, package installation or build step.
 
 For a quick preview, open `index.html` in a modern browser. Bootstrap loads from its CDN when available and falls back to the included local files when offline. JavaScript must be enabled for the product grids, filters, cart and form feedback.
 
-For consistent cart persistence between pages, use a local HTTP server. Open a terminal **inside the `shoqan` folder** and run:
+For consistent cart persistence between pages, use a local HTTP server. Open a terminal **inside the repository root** (the folder containing `index.html`) and run:
 
 ```sh
 python -m http.server 8000
 ```
 
 Then open [http://localhost:8000](http://localhost:8000). On Windows, `py -m http.server 8000` is an alternative when Python is installed through the Python launcher. Stop the server with `Ctrl+C`. A code editor's static server extension also works.
+
+The account pages and checkout are demonstration-only frontend flows: they validate input locally, show feedback in the page and never send credentials, payment data or orders to a server.
 
 ## Features and demo behavior
 
